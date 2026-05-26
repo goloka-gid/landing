@@ -9,17 +9,6 @@
       content="Выберите удобный способ оплаты курса «Магия внутри» для вашего региона."
     />
     <link rel="stylesheet" href="styles.css" />
-    <style>
-      /* Небольшие стили для центрирования нового фрейма ЮMoney внутри блока действий */
-      .yoomoney-frame-wrapper {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        min-height: 60px;
-        margin-bottom: 10px;
-      }
-    </style>
   </head>
   <body class="payment-page">
     <header class="site-header payment-header">
@@ -45,23 +34,23 @@
         </p>
 
         <div class="payment-actions">
-          <div class="yoomoney-frame-wrapper">
-            <iframe 
-              src="https://yoomoney.ru/quickpay/fundraise/button?billNumber=1I0DV2UN2HE.260526&" 
-              width="330" 
-              height="50" 
-              frameborder="0" 
-              allowtransparency="true" 
-              scrolling="no">
-            </iframe>
-          </div>
+          <a
+            href="https://yoomoney.ru/to/4100163174376"
+            target="_blank"
+            rel="noopener"
+            class="payment-button payment-button-yoomoney"
+            aria-label="Оплата из России через ЮMoney"
+          >
+            <span>Оплата из России</span>
+            <small>Карты, СБП, ЮMoney — 9 990 ₽</small>
+          </a>
 
           <a
             href="#"
             target="_blank"
             rel="noopener"
             class="payment-button payment-button-tribute"
-            aria-label="Оплата из других стран через Tribute, ссылка будет добавлена позже"
+            aria-label="Оплата из других стран через Tribute"
           >
             <span>Оплата из других стран</span>
             <small>Tribute</small>
