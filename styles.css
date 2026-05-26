@@ -294,6 +294,86 @@ h3 {
   font-weight: 900;
 }
 
+.audience-section,
+.wisdom-section,
+.artifacts-section,
+.future-section,
+.price-section {
+  padding: clamp(64px, 8vw, 112px) clamp(20px, 6vw, 82px);
+}
+
+.audience-section {
+  background: linear-gradient(135deg, #ffffff, #f5fbfb);
+}
+
+.audience-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.audience-grid article,
+.artifact-list article,
+.future-grid article,
+.science-points article {
+  border-radius: 8px;
+  border: 1px solid rgba(16, 20, 38, 0.1);
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.audience-grid article {
+  min-height: 220px;
+  padding: 26px;
+}
+
+.science-section {
+  background:
+    linear-gradient(135deg, rgba(21, 26, 52, 0.95), rgba(51, 42, 81, 0.88)),
+    url("assets/gratitude.png") center / cover;
+  color: white;
+}
+
+.science-section .section-copy p,
+.science-points p {
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.science-points {
+  display: grid;
+  gap: 16px;
+}
+
+.science-points article {
+  padding: 24px;
+  border-color: var(--line);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+}
+
+.science-points span,
+.future-grid span {
+  display: inline-flex;
+  margin-bottom: 14px;
+  color: var(--gold);
+  font-weight: 900;
+}
+
+.wisdom-section {
+  background:
+    linear-gradient(135deg, rgba(255, 247, 228, 0.95), rgba(255, 255, 255, 0.95)),
+    url("assets/chest.png") center / cover;
+}
+
+.wisdom-section .wide-copy {
+  max-width: 980px;
+}
+
+.wisdom-section p:not(.eyebrow) {
+  font-size: 19px;
+  color: #3f4557;
+}
+
 .clean-list {
   margin: 26px 0 0;
   padding: 0;
@@ -343,6 +423,43 @@ h3 {
 
 .wide-image {
   max-height: 650px;
+}
+
+.artifacts-section {
+  background: white;
+}
+
+.artifact-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  margin-top: 38px;
+}
+
+.artifact-list article {
+  min-height: 210px;
+  padding: 26px;
+  background: linear-gradient(180deg, #ffffff, #f7fafc);
+}
+
+.future-section {
+  background:
+    linear-gradient(135deg, rgba(255, 247, 228, 0.94), rgba(237, 247, 246, 0.94)),
+    url("assets/bridge.png") center / cover;
+}
+
+.future-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 36px;
+}
+
+.future-grid article {
+  min-height: 230px;
+  padding: 28px;
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: 0 20px 50px rgba(16, 20, 38, 0.08);
 }
 
 .inside {
@@ -412,6 +529,77 @@ h3 {
 
 .join-image {
   aspect-ratio: 16 / 9;
+}
+
+.price-section {
+  background:
+    radial-gradient(circle at 24% 18%, rgba(241, 207, 122, 0.22), transparent 30%),
+    linear-gradient(135deg, var(--night), var(--violet));
+  color: white;
+}
+
+.price-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: clamp(24px, 5vw, 56px);
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: clamp(28px, 5vw, 54px);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.07);
+  box-shadow: var(--shadow);
+}
+
+.price-copy {
+  max-width: 640px;
+}
+
+.price-copy p {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 18px;
+}
+
+.price-copy strong {
+  color: var(--gold);
+  font-size: 1.2em;
+}
+
+.timer {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(72px, 1fr));
+  gap: 10px;
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+
+.timer div {
+  min-width: 76px;
+  padding: 18px 12px;
+  border: 1px solid rgba(241, 207, 122, 0.36);
+  border-radius: 8px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.timer span {
+  display: block;
+  color: var(--gold);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(34px, 4vw, 52px);
+  line-height: 1;
+}
+
+.timer small {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.price-card .button {
+  justify-self: start;
 }
 
 .payment-page {
@@ -535,8 +723,20 @@ h3 {
   }
 
   .principles,
-  .result-grid {
+  .result-grid,
+  .audience-grid,
+  .artifact-list,
+  .future-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .price-card {
     grid-template-columns: 1fr;
+  }
+
+  .timer {
+    grid-column: auto;
+    grid-row: auto;
   }
 }
 
@@ -564,17 +764,25 @@ h3 {
     margin-left: 0;
   }
 
-  .split-section,
+    .split-section,
   .promise,
   .matrix-section,
   .inside,
   .transformation,
-  .join {
+  .join,
+  .audience-section,
+  .wisdom-section,
+  .artifacts-section,
+  .future-section,
+  .price-section {
     padding: 54px 18px;
   }
 
   .principles article,
-  .result-grid article {
+  .result-grid article,
+  .audience-grid article,
+  .artifact-list article,
+  .future-grid article {
     min-height: auto;
     padding: 22px;
   }
@@ -587,5 +795,20 @@ h3 {
 
   .payment-shell {
     padding: 94px 16px 34px;
+  }
+
+  .timer {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .result-grid,
+  .audience-grid,
+  .artifact-list,
+  .future-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .price-card .button {
+    justify-self: stretch;
   }
 }
