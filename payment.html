@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Выбор способа оплаты - Магия внутри</title>
+    <title>Выбор оплаты - Магия внутри</title>
     <meta
       name="description"
-      content="Выберите удобный способ оплаты курса «Магия внутри» для вашего региона."
+      content="Оплатите весь курс «Магия внутри» или тест-драйв первого дня."
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
@@ -16,45 +16,61 @@
         <span class="brand-mark"></span>
         <span>Магия внутри</span>
       </a>
-      <nav class="nav" aria-label="Nav">
-        <a href="index.html#program">Программа</a>
-        <a href="index.html#inside">Что внутри</a>
-        <a href="index.html#results">Results</a>
+      <nav class="nav" aria-label="Навигация">
+        <a href="lend2.html">Лендинг</a>
+        <a href="lend2.html#inside-day">1 день</a>
+        <a href="lend2.html#price2">Стоимость</a>
       </nav>
-      <a class="header-cta" href="index.html">Назад</a>
+      <a class="header-cta" href="lend2.html">Назад</a>
     </header>
 
     <main class="payment-shell">
-      <section class="payment-card" aria-labelledby="payment-title">
+      <section class="payment-card payment-card-wide" aria-labelledby="payment-title">
         <p class="eyebrow">Запись на курс</p>
-        <h1 id="payment-title">Оформление заказа</h1>
+        <h1 id="payment-title">Выберите формат оплаты</h1>
         <p class="payment-subtitle">
-          Выберите удобный способ оплаты для вашего региона, чтобы записаться на курс
-          «Магия внутри».
+          Можно оплатить весь курс сразу или начать с первого дня, чтобы познакомиться
+          с подачей и решить, подходит ли вам формат.
         </p>
 
-        <div class="payment-actions">
-          <a
-            href="https://yoomoney.ru/to/4100163174376"
-            target="_blank"
-            rel="noopener"
-            class="payment-button payment-button-yoomoney"
-            aria-label="Оплата из России через ЮMoney"
-          >
-            <span>Оплата из России</span>
-            <small>Карты, СБП, ЮMoney — 9 990 ₽</small>
-          </a>
+        <div class="payment-offers">
+          <article id="full" class="payment-offer">
+            <h2>Весь курс</h2>
+            <p class="payment-price">9 990 руб.</p>
+            <p>
+              10 дней, 10 артефактов, взрослые практики, детские медитации, сказки,
+              задания и семейные вопросы для закрепления.
+            </p>
+            <div class="payment-actions">
+              <a href="https://yoomoney.ru/to/4100163174376" target="_blank" rel="noopener" class="payment-button payment-button-yoomoney">
+                <span>Оплатить весь курс из России</span>
+                <small>Карты, СБП, ЮMoney - 9 990 руб.</small>
+              </a>
+              <a href="#" target="_blank" rel="noopener" class="payment-button payment-button-tribute">
+                <span>Оплатить весь курс из других стран</span>
+                <small>Tribute - ссылка будет добавлена</small>
+              </a>
+            </div>
+          </article>
 
-          <a
-            href="#"
-            target="_blank"
-            rel="noopener"
-            class="payment-button payment-button-tribute"
-            aria-label="Оплата из других стран через Tribute"
-          >
-            <span>Оплата из других стран</span>
-            <small>Tribute</small>
-          </a>
+          <article id="day1" class="payment-offer">
+            <h2>Тест-драйв: 1 день</h2>
+            <p class="payment-price">1 000 руб.</p>
+            <p>
+              Первый день «Волшебная Кисть»: сказка про Элли, детская практика,
+              взрослая медитация, задания и первый артефакт.
+            </p>
+            <div class="payment-actions">
+              <a href="#" target="_blank" rel="noopener" class="payment-button payment-button-yoomoney">
+                <span>Оплатить 1 день из России</span>
+                <small>Карты, СБП, ЮMoney - ссылка будет добавлена</small>
+              </a>
+              <a href="#" target="_blank" rel="noopener" class="payment-button payment-button-tribute">
+                <span>Оплатить 1 день из других стран</span>
+                <small>Tribute - ссылка будет добавлена</small>
+              </a>
+            </div>
+          </article>
         </div>
 
         <div class="support-block">
