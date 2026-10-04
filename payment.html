@@ -30,8 +30,8 @@
         <p class="eyebrow">Запись на курс</p>
         <h1 id="payment-title">Выберите доступ</h1>
         <p class="payment-subtitle">
-          Можно начать с одного дня, пройти весь маршрут самостоятельно или выбрать
-          формат с проверкой заданий и обратной связью.
+          Выберите удобный способ оплаты: Tribute для всего мира или перевод
+          через российский банк по реквизитам.
         </p>
 
         <div class="payment-offers payment-offers-three">
@@ -44,14 +44,14 @@
               взрослая медитация, задание и первый артефакт.
             </p>
             <div class="payment-actions">
-              <a href="https://t.me/golokeshvaradas" target="_blank" rel="noopener" class="payment-button payment-button-yoomoney">
-                <span>Получить реквизиты</span>
-                <small>Оплата из любого российского банка в Telegram</small>
-              </a>
               <a href="https://web.tribute.tg/p/G60" target="_blank" rel="noopener" class="payment-button payment-button-tribute">
                 <span>Оплатить через Tribute</span>
-                <small>Карта или Telegram · 1 000 руб.</small>
+                <small>Весь мир · карта или Telegram</small>
               </a>
+              <button type="button" class="payment-button payment-button-russia js-open-russian-modal" data-plan="Старт" data-price="1 000 ₽" aria-controls="russian-payment-modal">
+                <span>Российский банк</span>
+                <small>Получить реквизиты</small>
+              </button>
             </div>
           </article>
 
@@ -64,14 +64,14 @@
               практики для детей и взрослых и домашние задания.
             </p>
             <div class="payment-actions">
-              <a href="https://t.me/golokeshvaradas" target="_blank" rel="noopener" class="payment-button payment-button-yoomoney">
-                <span>Получить реквизиты</span>
-                <small>Оплата из любого российского банка в Telegram</small>
-              </a>
               <a href="https://web.tribute.tg/p/G64" target="_blank" rel="noopener" class="payment-button payment-button-tribute">
                 <span>Оплатить через Tribute</span>
-                <small>Карта или Telegram · 6 990 руб.</small>
+                <small>Весь мир · карта или Telegram</small>
               </a>
+              <button type="button" class="payment-button payment-button-russia js-open-russian-modal" data-plan="Весь маршрут" data-price="6 990 ₽" aria-controls="russian-payment-modal">
+                <span>Российский банк</span>
+                <small>Получить реквизиты</small>
+              </button>
             </div>
           </article>
 
@@ -84,14 +84,14 @@
               и последовательным прохождением.
             </p>
             <div class="payment-actions">
-              <a href="https://t.me/golokeshvaradas" target="_blank" rel="noopener" class="payment-button payment-button-yoomoney">
-                <span>Получить реквизиты</span>
-                <small>Оплата из любого российского банка в Telegram</small>
-              </a>
               <a href="https://web.tribute.tg/p/G66" target="_blank" rel="noopener" class="payment-button payment-button-tribute">
                 <span>Оплатить через Tribute</span>
-                <small>Карта или Telegram · 9 990 руб.</small>
+                <small>Весь мир · карта или Telegram</small>
               </a>
+              <button type="button" class="payment-button payment-button-russia js-open-russian-modal" data-plan="С сопровождением" data-price="9 990 ₽" aria-controls="russian-payment-modal">
+                <span>Российский банк</span>
+                <small>Получить реквизиты</small>
+              </button>
             </div>
           </article>
         </div>
@@ -107,5 +107,65 @@
         </div>
       </section>
     </main>
+
+    <div class="payment-modal" id="russian-payment-modal" hidden>
+      <div class="payment-modal-backdrop" data-close-modal></div>
+      <section class="payment-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="russian-modal-title">
+        <button type="button" class="payment-modal-close" aria-label="Закрыть" data-close-modal>×</button>
+        <p class="payment-kicker">Оплата в России</p>
+        <h2 id="russian-modal-title">Получить реквизиты</h2>
+        <p class="payment-modal-selected">Вы выбрали: <strong id="russian-modal-plan">тариф</strong> · <strong id="russian-modal-price">цена</strong></p>
+        <p>
+          Оплатить можно через СБП или переводом по номеру карты на Сбербанк,
+          Т-Банк или Альфа-Банк.
+        </p>
+        <p>
+          Чтобы получить актуальные реквизиты, напишите автору в личные сообщения
+          и укажите выбранный тариф.
+        </p>
+        <a id="russian-modal-telegram" class="payment-button payment-button-telegram" href="https://t.me/golokeshvaradas" target="_blank" rel="noopener">
+          Получить реквизиты в Telegram
+        </a>
+        <small class="payment-modal-note">Откроется чат с автором курса.</small>
+      </section>
+    </div>
+
+    <script>
+      (() => {
+        const modal = document.getElementById('russian-payment-modal');
+        const plan = document.getElementById('russian-modal-plan');
+        const price = document.getElementById('russian-modal-price');
+        const telegram = document.getElementById('russian-modal-telegram');
+        const closeButton = modal.querySelector('.payment-modal-close');
+        let lastFocusedElement = null;
+
+        const closeModal = () => {
+          modal.hidden = true;
+          document.body.classList.remove('modal-open');
+          if (lastFocusedElement) lastFocusedElement.focus();
+        };
+
+        document.querySelectorAll('.js-open-russian-modal').forEach((button) => {
+          button.addEventListener('click', () => {
+            lastFocusedElement = document.activeElement;
+            plan.textContent = button.dataset.plan;
+            price.textContent = button.dataset.price;
+            const message = `Здравствуйте! Хочу оплатить тариф «${button.dataset.plan}» (${button.dataset.price}). Пришлите, пожалуйста, реквизиты.`;
+            telegram.href = `https://t.me/golokeshvaradas?text=${encodeURIComponent(message)}`;
+            modal.hidden = false;
+            document.body.classList.add('modal-open');
+            closeButton.focus();
+          });
+        });
+
+        modal.addEventListener('click', (event) => {
+          if (event.target.matches('[data-close-modal]')) closeModal();
+        });
+
+        document.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape' && !modal.hidden) closeModal();
+        });
+      })();
+    </script>
   </body>
 </html>
