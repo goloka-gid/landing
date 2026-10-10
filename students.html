@@ -64,7 +64,6 @@
               <p class="eyebrow eyebrow-dark">Текущая неделя</p>
               <h2 id="week-title">Настраиваемся на практику</h2>
             </div>
-            <span class="update-badge" id="sync-status">Обновляется перед началом недели</span>
           </div>
 
           <!-- Перед каждой неделей обновите название качества, описание и ссылки ниже. -->
@@ -118,7 +117,7 @@
               <h3 data-sheet="title">Дополнительная встреча</h3>
               <p data-sheet="description">Отдельная практика и пространство для вопросов участников тарифа «С сопровождением».</p>
               <div class="session-meta"><strong data-sheet="datetime">Дата и время в личных сообщениях</strong></div>
-              <span class="meeting-link meeting-link-placeholder" data-sheet-link>Ссылка будет добавлена перед встречей</span>
+              <span class="meeting-link meeting-link-placeholder">Дата, время и ссылка будут в личных сообщениях</span>
             </article>
           </div>
         </div>
@@ -163,14 +162,13 @@
     </main>
 
     <footer class="site-footer students-footer">
-      <div class="container footer-inner"><span>© Магия внутри</span><a href="lend2.html">Вернуться на страницу курса ↑</a></div>
+      <div class="container footer-inner"><span>© Магия внутри</span><a href="lend2.html">&nbsp;Вернуться на страницу курса ↑</a></div>
     </footer>
 
     <script>
       (() => {
         const sheetId = '1xLrrLvIuOHXLeJ4l-fqJp77txVBdPu3Y20WllVrOgG8';
         const sheetName = 'Текущая неделя';
-        const syncStatus = document.getElementById('sync-status');
 
         const cellValue = (cell) => {
           if (!cell) return '';
@@ -284,9 +282,7 @@
             setLink(recordingsCard, recordings['Ссылка'], 'Открыть записи →');
           }
 
-          if (syncStatus) syncStatus.textContent = 'Данные из Google Таблицы';
         }).catch(() => {
-          if (syncStatus) syncStatus.textContent = 'Показана сохранённая версия';
         });
       })();
     </script>
