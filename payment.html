@@ -105,17 +105,18 @@
         <h2 id="application-modal-title">Подать заявку</h2>
         <p class="payment-modal-selected">Вы выбрали: <strong id="application-modal-plan">тариф</strong> · <strong id="application-modal-price">цена</strong></p>
         <p>
-          Чтобы получить актуальные реквизиты, напишите автору в личные сообщения.
+          Чтобы получить актуальные реквизиты, напишите автору в личные сообщения. Если удобнее,
+          оставьте свои контакты в форме — автор свяжется с вами.
         </p>
         <div class="payment-modal-actions">
           <a id="application-modal-telegram" class="payment-button payment-button-telegram" href="https://t.me/golokeshvaradas" target="_blank" rel="noopener">
             Получить реквизиты в Telegram
           </a>
-          <a id="application-modal-contact" class="payment-button payment-button-contact" href="https://t.me/golokeshvaradas" target="_blank" rel="noopener">
+          <a id="application-modal-contact" class="payment-button payment-button-contact" href="https://forms.gle/fA3XQTghfwCx5cJq5" target="_blank" rel="noopener">
             Свяжитесь со мной
           </a>
         </div>
-        <small class="payment-modal-note">Выберите удобный способ связи.</small>
+        <small class="payment-modal-note">Telegram — для реквизитов, форма — чтобы оставить контакты.</small>
       </section>
     </div>
 
@@ -126,6 +127,7 @@
         const price = document.getElementById('application-modal-price');
         const telegram = document.getElementById('application-modal-telegram');
         const contact = document.getElementById('application-modal-contact');
+        const contactFormUrl = 'https://forms.gle/fA3XQTghfwCx5cJq5';
         const closeButton = modal.querySelector('.payment-modal-close');
         let lastFocusedElement = null;
 
@@ -141,9 +143,8 @@
             plan.textContent = button.dataset.plan;
             price.textContent = button.dataset.price;
             const requisitesMessage = `Здравствуйте! Хочу получить реквизиты для тарифа «${button.dataset.plan}» (${button.dataset.price}).`;
-            const contactMessage = `Здравствуйте! Хочу оставить заявку на тариф «${button.dataset.plan}» (${button.dataset.price}). Пожалуйста, свяжитесь со мной.`;
             telegram.href = `https://t.me/golokeshvaradas?text=${encodeURIComponent(requisitesMessage)}`;
-            contact.href = `https://t.me/golokeshvaradas?text=${encodeURIComponent(contactMessage)}`;
+            contact.href = contactFormUrl;
             modal.hidden = false;
             document.body.classList.add('modal-open');
             closeButton.focus();
