@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Студентам — Магия внутри</title>
+    <meta
+      name="description"
+      content="Актуальное расписание встреч, ссылки и материалы для студентов курса «Магия внутри»."
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles-students.css" />
+  </head>
+  <body class="students-page">
+    <header class="site-header students-header">
+      <a class="brand" href="lend2.html" aria-label="Магия внутри — на главную">
+        <span class="brand-mark"></span>
+        <span>Магия внутри</span>
+      </a>
+      <nav class="nav" aria-label="Навигация">
+        <a href="lend2.html">Лендинг</a>
+        <a href="payment.html">Тарифы</a>
+        <a href="students.html" aria-current="page">Студентам</a>
+      </nav>
+      <a class="header-cta" href="https://t.me/golokeshvaradas" target="_blank" rel="noopener">Написать автору</a>
+    </header>
+
+    <main>
+      <section class="students-hero">
+        <div class="students-hero-glow" aria-hidden="true"></div>
+        <div class="container students-hero-inner">
+          <div>
+            <p class="eyebrow">Пространство участников</p>
+            <h1>Всё важное —<br />в одном месте</h1>
+            <p class="students-hero-lead">
+              Здесь появляются расписание текущей недели, приглашения на встречи,
+              ссылки и материалы курса.
+            </p>
+            <div class="students-hero-facts" aria-label="Информация о встречах">
+              <span><strong>2</strong> общие встречи</span>
+              <span><strong>7:00</strong> по Москве</span>
+              <span><strong>1</strong> качество недели</span>
+            </div>
+          </div>
+          <aside class="students-welcome-card">
+            <span class="students-card-icon" aria-hidden="true">✦</span>
+            <p class="eyebrow">Перед каждой неделей</p>
+            <h2>Загляните сюда</h2>
+            <p>Все изменения и ссылки будут появляться на этой странице заранее.</p>
+          </aside>
+        </div>
+      </section>
+
+      <!--
+        ===== НАЧАЛО ЕЖЕНЕДЕЛЬНОГО ОБНОВЛЕНИЯ =====
+        Здесь можно менять тему недели, описание, даты, время и ссылки.
+        Чтобы добавить встречу, замените span.meeting-link-placeholder на:
+        <a class="meeting-link meeting-link-live" href="ВАША_ССЫЛКА">Подключиться к встрече →</a>
+      -->
+      <section class="students-section students-week-section" aria-labelledby="week-title">
+        <div class="container">
+          <div class="students-section-heading">
+            <div>
+              <p class="eyebrow eyebrow-dark">Текущая неделя</p>
+              <h2 id="week-title">Настраиваемся на практику</h2>
+            </div>
+            <span class="update-badge">Обновляется перед началом недели</span>
+          </div>
+
+          <!-- Перед каждой неделей обновите название качества, описание и ссылки ниже. -->
+          <article class="current-week-card">
+            <div class="current-week-number">01</div>
+            <div>
+              <p class="week-kicker">Качество недели</p>
+              <h3>Название качества недели</h3>
+              <p>
+                Здесь появится короткое приглашение к практике: на что обратить внимание,
+                что исследовать в медитации и как заметить это качество в обычной жизни.
+              </p>
+            </div>
+            <div class="week-practice-chip">
+              <span aria-hidden="true">🧘</span>
+              <span><strong>Основная практика</strong><small>Название медитации</small></span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="students-section schedule-section" aria-labelledby="schedule-title">
+        <div class="container">
+          <div class="students-section-heading compact-heading">
+            <div>
+              <p class="eyebrow eyebrow-dark">Подключайтесь вовремя</p>
+              <h2 id="schedule-title">Расписание и ссылки</h2>
+            </div>
+            <p class="section-caption">Ссылки публикуются заранее и остаются здесь до конца недели.</p>
+          </div>
+
+          <div class="schedule-grid">
+            <article class="session-card session-card-main">
+              <div class="session-topline"><span class="session-day">ПН</span><span class="session-tag">Открытие недели</span></div>
+              <h3>Встреча перед началом практики</h3>
+              <p>Знакомимся с качеством недели, разбираем медитацию, задаём вопросы и практикуем вместе.</p>
+              <div class="session-meta"><strong>Понедельник · 7:00 МСК</strong></div>
+              <span class="meeting-link meeting-link-placeholder">Ссылка будет добавлена перед встречей</span>
+            </article>
+
+            <article class="session-card">
+              <div class="session-topline"><span class="session-day">ПТ</span><span class="session-tag">Интеграция</span></div>
+              <h3>Встреча вопросов и практики</h3>
+              <p>Обсуждаем опыт недели, разбираем живые ситуации.</p>
+              <div class="session-meta"><strong>Пятница · 7:00 МСК</strong></div>
+              <span class="meeting-link meeting-link-placeholder">Ссылка будет добавлена перед встречей</span>
+            </article>
+
+            <article class="session-card session-card-support">
+              <div class="session-topline"><span class="session-day">✦</span><span class="session-tag">С сопровождением</span></div>
+              <h3>Дополнительная встреча</h3>
+              <p>Отдельная практика и пространство для вопросов участников тарифа «С сопровождением».</p>
+              <div class="session-meta"><strong>Дата и время в личных сообщениях</strong></div>
+              <span class="meeting-link meeting-link-placeholder">Ссылка будет добавлена перед встречей</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="students-section materials-section" aria-labelledby="materials-title">
+        <div class="container">
+          <div class="students-section-heading compact-heading">
+            <div>
+              <p class="eyebrow eyebrow-dark">Чтобы не потеряться</p>
+              <h2 id="materials-title">Материалы недели</h2>
+            </div>
+          </div>
+          <div class="materials-grid">
+            <article class="material-card"><span class="material-number">01</span><h3>Записи встреч</h3><p>Записи общих встреч.</p><span class="material-status">Будет добавлено</span></article>
+          </div>
+        </div>
+      </section>
+      <!-- ===== КОНЕЦ ЕЖЕНЕДЕЛЬНОГО ОБНОВЛЕНИЯ ===== -->
+
+      <section class="students-section rhythm-section" aria-labelledby="rhythm-title">
+        <div class="container rhythm-layout">
+          <div>
+            <p class="eyebrow">Ваш ритм недели</p>
+            <h2 id="rhythm-title">Не нужно успевать всё сразу</h2>
+            <p>Достаточно возвращаться к практике небольшими шагами и замечать, как новое качество проявляется в вашей жизни.</p>
+          </div>
+          <ol class="rhythm-list">
+            <li><span>01</span><div><strong>До встречи</strong><p>Посмотрите приглашение и подготовьте место, где вам будет спокойно.</p></div></li>
+            <li><span>02</span><div><strong>На неделе</strong><p>Практикуйте медитацию и возвращайтесь к урокам в удобном темпе.</p></div></li>
+            <li><span>03</span><div><strong>После встречи</strong><p>Задайте вопрос, отметьте наблюдения и выберите следующий маленький шаг.</p></div></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="students-contact">
+        <div class="container students-contact-inner">
+          <div><p class="eyebrow">Остались вопросы?</p><h2>Напишите автору курса</h2><p>Если не нашли нужную ссылку или не уверены, куда идти, напишите в личные сообщения.</p></div>
+          <a class="button button-primary" href="https://t.me/golokeshvaradas" target="_blank" rel="noopener">Написать в Telegram <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer students-footer">
+      <div class="container footer-inner"><span>© Магия внутри</span><a href="lend2.html">Вернуться на страницу курса ↑</a></div>
+    </footer>
+  </body>
+</html>
