@@ -372,9 +372,20 @@
   background: #f3efe7;
 }
 
-.meeting-link-live {
+.meeting-link-live,
+.material-link-live {
   color: white;
   background: linear-gradient(135deg, #168dcc, #42b7d4);
+}
+
+.material-link-live {
+  display: inline-block;
+  align-self: flex-start;
+  margin-top: auto;
+  padding: 5px 9px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
 }
 
 .meeting-link-live:hover {

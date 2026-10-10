@@ -64,16 +64,16 @@
               <p class="eyebrow eyebrow-dark">Текущая неделя</p>
               <h2 id="week-title">Настраиваемся на практику</h2>
             </div>
-            <span class="update-badge">Обновляется перед началом недели</span>
+            <span class="update-badge" id="sync-status">Обновляется перед началом недели</span>
           </div>
 
           <!-- Перед каждой неделей обновите название качества, описание и ссылки ниже. -->
-          <article class="current-week-card">
+          <article class="current-week-card" data-content-block="topic">
             <div class="current-week-number">01</div>
             <div>
               <p class="week-kicker">Качество недели</p>
-              <h3>Название качества недели</h3>
-              <p>
+              <h3 data-sheet="topic-title">Название качества недели</h3>
+              <p data-sheet="topic-description">
                 Здесь появится короткое приглашение к практике: на что обратить внимание,
                 что исследовать в медитации и как заметить это качество в обычной жизни.
               </p>
@@ -97,28 +97,28 @@
           </div>
 
           <div class="schedule-grid">
-            <article class="session-card session-card-main">
+            <article class="session-card session-card-main" data-schedule-key="monday">
               <div class="session-topline"><span class="session-day">ПН</span><span class="session-tag">Открытие недели</span></div>
-              <h3>Встреча перед началом практики</h3>
-              <p>Знакомимся с качеством недели, разбираем медитацию, задаём вопросы и практикуем вместе.</p>
-              <div class="session-meta"><strong>Понедельник · 7:00 МСК</strong></div>
-              <span class="meeting-link meeting-link-placeholder">Ссылка будет добавлена перед встречей</span>
+              <h3 data-sheet="title">Встреча перед началом практики</h3>
+              <p data-sheet="description">Знакомимся с качеством недели, разбираем медитацию, задаём вопросы и практикуем вместе.</p>
+              <div class="session-meta"><strong data-sheet="datetime">Понедельник · 7:00 МСК</strong></div>
+              <span class="meeting-link meeting-link-placeholder" data-sheet-link>Ссылка будет добавлена перед встречей</span>
             </article>
 
-            <article class="session-card">
+            <article class="session-card" data-schedule-key="friday">
               <div class="session-topline"><span class="session-day">ПТ</span><span class="session-tag">Интеграция</span></div>
-              <h3>Встреча вопросов и практики</h3>
-              <p>Обсуждаем опыт недели, разбираем живые ситуации.</p>
-              <div class="session-meta"><strong>Пятница · 7:00 МСК</strong></div>
-              <span class="meeting-link meeting-link-placeholder">Ссылка будет добавлена перед встречей</span>
+              <h3 data-sheet="title">Встреча вопросов и практики</h3>
+              <p data-sheet="description">Обсуждаем опыт недели, разбираем живые ситуации.</p>
+              <div class="session-meta"><strong data-sheet="datetime">Пятница · 7:00 МСК</strong></div>
+              <span class="meeting-link meeting-link-placeholder" data-sheet-link>Ссылка будет добавлена перед встречей</span>
             </article>
 
-            <article class="session-card session-card-support">
+            <article class="session-card session-card-support" data-schedule-key="support">
               <div class="session-topline"><span class="session-day">✦</span><span class="session-tag">С сопровождением</span></div>
-              <h3>Дополнительная встреча</h3>
-              <p>Отдельная практика и пространство для вопросов участников тарифа «С сопровождением».</p>
-              <div class="session-meta"><strong>Дата и время в личных сообщениях</strong></div>
-              <span class="meeting-link meeting-link-placeholder">Ссылка будет добавлена перед встречей</span>
+              <h3 data-sheet="title">Дополнительная встреча</h3>
+              <p data-sheet="description">Отдельная практика и пространство для вопросов участников тарифа «С сопровождением».</p>
+              <div class="session-meta"><strong data-sheet="datetime">Дата и время в личных сообщениях</strong></div>
+              <span class="meeting-link meeting-link-placeholder" data-sheet-link>Ссылка будет добавлена перед встречей</span>
             </article>
           </div>
         </div>
@@ -133,7 +133,7 @@
             </div>
           </div>
           <div class="materials-grid">
-            <article class="material-card"><span class="material-number">01</span><h3>Записи встреч</h3><p>Записи общих встреч.</p><span class="material-status">Будет добавлено</span></article>
+            <article class="material-card" data-material-key="recordings"><span class="material-number">01</span><h3 data-sheet="title">Записи встреч</h3><p data-sheet="description">Записи общих встреч.</p><span class="material-status" data-sheet-link>Будет добавлено</span></article>
           </div>
         </div>
       </section>
@@ -165,5 +165,129 @@
     <footer class="site-footer students-footer">
       <div class="container footer-inner"><span>© Магия внутри</span><a href="lend2.html">Вернуться на страницу курса ↑</a></div>
     </footer>
+
+    <script>
+      (() => {
+        const sheetId = '1xLrrLvIuOHXLeJ4l-fqJp77txVBdPu3Y20WllVrOgG8';
+        const sheetName = 'Текущая неделя';
+        const syncStatus = document.getElementById('sync-status');
+
+        const cellValue = (cell) => {
+          if (!cell) return '';
+          return String(cell.v ?? cell.f ?? '').trim();
+        };
+
+        const loadRows = () => new Promise((resolve, reject) => {
+          const callbackName = `scheduleCallback_${Date.now()}`;
+          const script = document.createElement('script');
+          const timeout = window.setTimeout(() => {
+            cleanup();
+            reject(new Error('Таблица не ответила вовремя'));
+          }, 10000);
+
+          const cleanup = () => {
+            window.clearTimeout(timeout);
+            delete window[callbackName];
+            script.remove();
+          };
+
+          window[callbackName] = (payload) => {
+            cleanup();
+            if (!payload || payload.status !== 'ok') {
+              reject(new Error('Не удалось прочитать таблицу'));
+              return;
+            }
+
+            const rows = payload.table?.rows || [];
+            const headers = (rows.shift()?.c || []).map(cellValue);
+            resolve(rows.map((row) => {
+              const values = row.c || [];
+              return headers.reduce((item, header, index) => {
+                if (header) item[header] = cellValue(values[index]);
+                return item;
+              }, {});
+            }));
+          };
+
+          const params = new URLSearchParams({
+            tqx: `out:json;responseHandler:${callbackName}`,
+            sheet: sheetName,
+          });
+          script.src = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?${params}`;
+          script.onerror = () => {
+            cleanup();
+            reject(new Error('Не удалось подключиться к таблице'));
+          };
+          document.head.appendChild(script);
+        });
+
+        const visibleRows = (rows) => rows.filter((row) => row['Показывать'].toLowerCase() !== 'нет');
+        const findRow = (rows, block, includes = '') => rows.find((row) => {
+          const dateTime = row['Дата и время'] || '';
+          return row['Блок'] === block && dateTime.toLowerCase().includes(includes.toLowerCase());
+        });
+        const setText = (root, selector, value) => {
+          const element = root?.querySelector(selector);
+          if (element && value) element.textContent = value;
+        };
+        const safeUrl = (value) => {
+          try {
+            const url = new URL(value);
+            return url.protocol === 'https:' ? url.href : '';
+          } catch {
+            return '';
+          }
+        };
+        const setLink = (root, value, label) => {
+          const element = root?.querySelector('[data-sheet-link]');
+          const url = safeUrl(value);
+          if (!element || !url) return;
+
+          const link = document.createElement('a');
+          link.className = element.className
+            .replace('meeting-link-placeholder', 'meeting-link-live')
+            .replace('material-status', 'material-link-live');
+          link.href = url;
+          link.target = '_blank';
+          link.rel = 'noopener';
+          link.textContent = label;
+          element.replaceWith(link);
+        };
+        const applySession = (row, selector) => {
+          const card = document.querySelector(selector);
+          if (!row || !card) return;
+          setText(card, '[data-sheet="title"]', row['Заголовок']);
+          setText(card, '[data-sheet="description"]', row['Описание']);
+          setText(card, '[data-sheet="datetime"]', row['Дата и время']);
+          setLink(card, row['Ссылка'], 'Подключиться к встрече →');
+        };
+
+        loadRows().then((rawRows) => {
+          const rows = visibleRows(rawRows);
+          const topic = rows.find((row) => row['Блок'] === 'Тема недели');
+          if (topic) {
+            const topicCard = document.querySelector('[data-content-block="topic"]');
+            setText(topicCard, '[data-sheet="topic-title"]', topic['Заголовок']);
+            setText(topicCard, '[data-sheet="topic-description"]', topic['Описание']);
+          }
+
+          applySession(findRow(rows, 'Встреча', 'понедельник'), '[data-schedule-key="monday"]');
+          applySession(findRow(rows, 'Встреча', 'пятница'), '[data-schedule-key="friday"]');
+          applySession(rows.find((row) => row['Блок'] === 'Сопровождение'), '[data-schedule-key="support"]');
+
+          const recordings = rows.find((row) => row['Блок'] === 'Записи');
+          const recordingsCard = document.querySelector('[data-material-key="recordings"]');
+          if (recordings && recordingsCard) {
+            setText(recordingsCard, '[data-sheet="title"]', recordings['Заголовок']);
+            setText(recordingsCard, '[data-sheet="description"]', recordings['Описание']);
+            setLink(recordingsCard, recordings['Ссылка'], 'Открыть записи →');
+          }
+
+          if (syncStatus) syncStatus.textContent = 'Данные из Google Таблицы';
+        }).catch(() => {
+          if (syncStatus) syncStatus.textContent = 'Показана сохранённая версия';
+        });
+      })();
+    </script>
   </body>
 </html>
