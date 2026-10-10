@@ -51,14 +51,28 @@ button.payment-button {
   cursor: pointer;
 }
 
-.payment-button-russia {
-  background: linear-gradient(135deg, #34415f, #5a6d91);
+.payment-button-apply {
+  background: linear-gradient(135deg, #168dcc, #42b7d4);
+}
+
+.payment-modal-actions {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.payment-button-telegram,
+.payment-button-contact {
+  width: 100%;
+  margin-top: 0;
 }
 
 .payment-button-telegram {
-  width: 100%;
-  margin-top: 8px;
   background: linear-gradient(135deg, #168dcc, #42b7d4);
+}
+
+.payment-button-contact {
+  background: linear-gradient(135deg, #34415f, #5a6d91);
 }
 
 .modal-open {

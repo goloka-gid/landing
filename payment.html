@@ -44,13 +44,9 @@
               общий чат и возможность продолжить следующую неделю за 990 ₽.
             </p>
             <div class="payment-actions">
-              <a href="https://web.tribute.tg/p/G60" target="_blank" rel="noopener" class="payment-button payment-button-tribute">
-                <span>Оплатить через Tribute</span>
-                <small>Весь мир · карта или Telegram</small>
-              </a>
-              <button type="button" class="payment-button payment-button-russia js-open-russian-modal" data-plan="Старт" data-price="990 ₽" aria-controls="russian-payment-modal">
-                <span>Российский банк</span>
-                <small>Получить реквизиты</small>
+              <button type="button" class="payment-button payment-button-apply js-open-application-modal" data-plan="Старт" data-price="990 ₽" aria-controls="application-modal">
+                <span>Подать заявку</span>
+                <small>Получить реквизиты и условия</small>
               </button>
             </div>
           </article>
@@ -64,13 +60,9 @@
               и их проверка. Следующий урок открывается после выполнения текущего.
             </p>
             <div class="payment-actions">
-              <a href="https://web.tribute.tg/p/G64" target="_blank" rel="noopener" class="payment-button payment-button-tribute">
-                <span>Оплатить через Tribute</span>
-                <small>Весь мир · карта или Telegram</small>
-              </a>
-              <button type="button" class="payment-button payment-button-russia js-open-russian-modal" data-plan="Весь маршрут" data-price="6 990 ₽" aria-controls="russian-payment-modal">
-                <span>Российский банк</span>
-                <small>Получить реквизиты</small>
+              <button type="button" class="payment-button payment-button-apply js-open-application-modal" data-plan="Весь маршрут" data-price="6 990 ₽" aria-controls="application-modal">
+                <span>Подать заявку</span>
+                <small>Получить реквизиты и условия</small>
               </button>
             </div>
           </article>
@@ -85,20 +77,16 @@
               Вопросы можно задавать напрямую и получать личные ответы.
             </p>
             <div class="payment-actions">
-              <a href="https://web.tribute.tg/p/G66" target="_blank" rel="noopener" class="payment-button payment-button-tribute">
-                <span>Оплатить через Tribute</span>
-                <small>Весь мир · карта или Telegram</small>
-              </a>
-              <button type="button" class="payment-button payment-button-russia js-open-russian-modal" data-plan="С сопровождением" data-price="9 990 ₽" aria-controls="russian-payment-modal">
-                <span>Российский банк</span>
-                <small>Получить реквизиты</small>
+              <button type="button" class="payment-button payment-button-apply js-open-application-modal" data-plan="С сопровождением" data-price="9 990 ₽" aria-controls="application-modal">
+                <span>Подать заявку</span>
+                <small>Получить реквизиты и условия</small>
               </button>
             </div>
           </article>
         </div>
 
         <div class="support-block">
-          <p>Нужны реквизиты или возникли вопросы по оплате?</p>
+          <p>Нужны реквизиты или хотите оставить заявку?</p>
           <p>
             Напишите автору в Telegram:
             <a href="https://t.me/golokeshvaradas" target="_blank" rel="noopener" class="support-link">
@@ -109,34 +97,35 @@
       </section>
     </main>
 
-    <div class="payment-modal" id="russian-payment-modal" hidden>
+    <div class="payment-modal" id="application-modal" hidden>
       <div class="payment-modal-backdrop" data-close-modal></div>
-      <section class="payment-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="russian-modal-title">
+      <section class="payment-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="application-modal-title">
         <button type="button" class="payment-modal-close" aria-label="Закрыть" data-close-modal>×</button>
-        <p class="payment-kicker">Оплата в России</p>
-        <h2 id="russian-modal-title">Получить реквизиты</h2>
-        <p class="payment-modal-selected">Вы выбрали: <strong id="russian-modal-plan">тариф</strong> · <strong id="russian-modal-price">цена</strong></p>
+        <p class="payment-kicker">Ваша заявка</p>
+        <h2 id="application-modal-title">Подать заявку</h2>
+        <p class="payment-modal-selected">Вы выбрали: <strong id="application-modal-plan">тариф</strong> · <strong id="application-modal-price">цена</strong></p>
         <p>
-          Оплатить можно через СБП или переводом по номеру карты на Сбербанк,
-          Т-Банк или Альфа-Банк.
+          Чтобы получить актуальные реквизиты, напишите автору в личные сообщения.
         </p>
-        <p>
-          Чтобы получить актуальные реквизиты, напишите автору в личные сообщения
-          и укажите выбранный тариф.
-        </p>
-        <a id="russian-modal-telegram" class="payment-button payment-button-telegram" href="https://t.me/golokeshvaradas" target="_blank" rel="noopener">
-          Получить реквизиты в Telegram
-        </a>
-        <small class="payment-modal-note">Откроется чат с автором курса.</small>
+        <div class="payment-modal-actions">
+          <a id="application-modal-telegram" class="payment-button payment-button-telegram" href="https://t.me/golokeshvaradas" target="_blank" rel="noopener">
+            Получить реквизиты в Telegram
+          </a>
+          <a id="application-modal-contact" class="payment-button payment-button-contact" href="https://t.me/golokeshvaradas" target="_blank" rel="noopener">
+            Свяжитесь со мной
+          </a>
+        </div>
+        <small class="payment-modal-note">Выберите удобный способ связи.</small>
       </section>
     </div>
 
     <script>
       (() => {
-        const modal = document.getElementById('russian-payment-modal');
-        const plan = document.getElementById('russian-modal-plan');
-        const price = document.getElementById('russian-modal-price');
-        const telegram = document.getElementById('russian-modal-telegram');
+        const modal = document.getElementById('application-modal');
+        const plan = document.getElementById('application-modal-plan');
+        const price = document.getElementById('application-modal-price');
+        const telegram = document.getElementById('application-modal-telegram');
+        const contact = document.getElementById('application-modal-contact');
         const closeButton = modal.querySelector('.payment-modal-close');
         let lastFocusedElement = null;
 
@@ -146,13 +135,15 @@
           if (lastFocusedElement) lastFocusedElement.focus();
         };
 
-        document.querySelectorAll('.js-open-russian-modal').forEach((button) => {
+        document.querySelectorAll('.js-open-application-modal').forEach((button) => {
           button.addEventListener('click', () => {
             lastFocusedElement = document.activeElement;
             plan.textContent = button.dataset.plan;
             price.textContent = button.dataset.price;
-            const message = `Здравствуйте! Хочу оплатить тариф «${button.dataset.plan}» (${button.dataset.price}). Пришлите, пожалуйста, реквизиты.`;
-            telegram.href = `https://t.me/golokeshvaradas?text=${encodeURIComponent(message)}`;
+            const requisitesMessage = `Здравствуйте! Хочу получить реквизиты для тарифа «${button.dataset.plan}» (${button.dataset.price}).`;
+            const contactMessage = `Здравствуйте! Хочу оставить заявку на тариф «${button.dataset.plan}» (${button.dataset.price}). Пожалуйста, свяжитесь со мной.`;
+            telegram.href = `https://t.me/golokeshvaradas?text=${encodeURIComponent(requisitesMessage)}`;
+            contact.href = `https://t.me/golokeshvaradas?text=${encodeURIComponent(contactMessage)}`;
             modal.hidden = false;
             document.body.classList.add('modal-open');
             closeButton.focus();
