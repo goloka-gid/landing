@@ -80,7 +80,7 @@
             </div>
             <div class="week-practice-chip">
               <span aria-hidden="true">🧘</span>
-              <span><strong>Основная практика</strong><small>Название медитации</small></span>
+              <span><strong>Основная практика</strong><small data-sheet="topic-practice">Название медитации</small></span>
             </div>
           </article>
         </div>
@@ -269,6 +269,7 @@
             const topicCard = document.querySelector('[data-content-block="topic"]');
             setText(topicCard, '[data-sheet="topic-title"]', topic['Заголовок']);
             setText(topicCard, '[data-sheet="topic-description"]', topic['Описание']);
+            setText(topicCard, '[data-sheet="topic-practice"]', topic['Практика']);
           }
 
           applySession(findRow(rows, 'Встреча', 'понедельник'), '[data-schedule-key="monday"]');
